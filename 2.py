@@ -26,26 +26,23 @@ class Paint(Frame):
 
     def setUI(self):
 
-        self.parent.title("Paint")  # Устанавливаем название окна
-        self.pack(fill=BOTH, expand=1)  # Размещаем активные элементы на родительском окне
+        self.parent.title("Paint")  
+        self.pack(fill=BOTH, expand=1)  
 
-        self.columnconfigure(6, weight=1) # Даем седьмому столбцу возможность растягиваться, благодаря чему кнопки не будут разъезжаться при ресайзе
-        self.rowconfigure(2, weight=1) # То же самое для третьего ряда
+        self.columnconfigure(6, weight=1) 
+        self.rowconfigure(2, weight=1) 
 
-        self.canv = Canvas(self, bg="white")  # Создаем поле для рисования, устанавливаем белый фон
+        self.canv = Canvas(self, bg="white")  
         self.canv.grid(row=2, column=0, columnspan=7,
-                       padx=5, pady=5, sticky=E+W+S+N)  # Прикрепляем канвас методом grid. Он будет находится в 3м ряду, первой колонке, и будет занимать 7 колонок, задаем отступы по X и Y в 5 пикселей, и заставляем растягиваться при растягивании всего окна
-        self.canv.bind("<B1-Motion>", self.draw) # Привязываем обработчик к канвасу. <B1-Motion> означает "при движении зажатой левой кнопки мыши" вызывать функцию draw
+                       padx=5, pady=5, sticky=E+W+S+N)  
+        self.canv.bind("<B1-Motion>", self.draw) 
 
-        color_lab = Label(self, text="Color: ") # Создаем метку для кнопок изменения цвета кисти
-        color_lab.grid(row=0, column=0, padx=6) # Устанавливаем созданную метку в первый ряд и первую колонку, задаем горизонтальный отступ в 6 пикселей
+        color_lab = Label(self, text="Color: ") 
+        color_lab.grid(row=0, column=0, padx=6) 
 
         red_btn = Button(self, text="Red", width=10,
-                         command=lambda: self.set_color("red")) # Создание кнопки:  Установка текста кнопки, задание ширины кнопки (10 символов), функция вызываемая при нажатии кнопки.
-        red_btn.grid(row=0, column=1) # Устанавливаем кнопку
-
-        # Создание остальных кнопок повторяет ту же логику, что и создание
-        # кнопки установки красного цвета, отличаются лишь аргументы.
+                         command=lambda: self.set_color("red")) 
+        red_btn.grid(row=0, column=1) 
 
         green_btn = Button(self, text="Green", width=10,
                            command=lambda: self.set_color("green"))
